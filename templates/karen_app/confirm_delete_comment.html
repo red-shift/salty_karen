@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Delete Comment
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete <strong>"{{ comment }}"</strong>?</p>
+        <input type="submit" class="btn btn-primary" value="Confirm">
+    </form>
+</div>
+
+{% endblock %}

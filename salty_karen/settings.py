@@ -61,7 +61,7 @@ ROOT_URLCONF = 'salty_karen.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,8 +82,15 @@ WSGI_APPLICATION = 'salty_karen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'salty_karen',
+        'USER': 'root',
+        'PASSWORD': 'b7a8394ac',
+        'HOST': 'localhost',
+        'OPTIONS': {
+          'autocommit': True,
+          'use_pure': True,
+        },
     }
 }
 

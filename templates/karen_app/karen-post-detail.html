@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Karen Tracker Timeline
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Karen Post</h2>
+    <div class="card mb-5">
+        <img src="{{ post.image.url }}" height="200" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.description }}</p>
+            <p class="card-text"><a href="{{ post.get_absolute_url }}">Read More...</a></p>
+            <a href="{% url 'post-update' post.slug %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'post-delete' post.slug %}" class="btn btn-danger">Delete</a>
+        </div>
+
+        <h3>Comments</h3>
+        <hr>
+
+        {% if post.comments %}
+            {% for c in post.comments.all %}
+                <p>
+                    {{ c.author }}: {{ c.content }}
+                    <a href="{% url 'comment-update' c.uuid %}">update</a>
+                    <a href="{% url 'comment-delete' c.uuid %}">delete</a>
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'comment-create' post.slug %}">{% csrf_token %}
+            <textarea name="content" class="form-control"></textarea>
+
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

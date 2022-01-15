@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Karen Tracker Timeline
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Karen Post</h2>
+    {% if posts %}
+        <div class="row">
+            {% for p in posts %}
+            <div class="col-md-3">
+                <div class="card mb-5">
+                    <img src="{{ p.image.url }}" height="200" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.title }}</h5>
+                        <p class="card-text">{{ p.description }}</p>
+                        <p class="card-text"><a href="{{ p.get_absolute_url }}">Read More...</a></p>
+                        <a href="{% url 'post-update' p.slug %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'post-delete' p.slug %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>There are no posts!</p>
+    {% endif %}
+</div>
+
+{% endblock %}

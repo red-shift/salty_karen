@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Karen Tracker Timeline
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="row g-3" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="col-12">
+            {{ form.title.label }}*
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+
+        <div class="col-12">
+            {{ form.name.label }}*
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+
+        <div class="col-12">
+            {{ form.location.label }}*
+            {{ form.location }}
+            {{ form.location.errors }}
+        </div>
+
+        <div class="col-12">
+            {{ form.video.label }}
+            {{ form.video }}
+            {{ form.video.errors }}
+        </div>
+
+        <div class="col-12">
+            {{ form.image.label }}*
+            {{ form.image }}
+            {{ form.image.errors }}
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Post!</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

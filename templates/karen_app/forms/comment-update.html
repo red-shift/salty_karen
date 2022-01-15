@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Comment Update
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="row g-3" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="col-12">
+            {{ form.content.label }}
+            {{ form.content }}
+            {{ form.content.errors }}
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Update!</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
