@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'salty_karen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'core_db',
-        'USER': 'thesaltykaren$core_db',
+        'NAME': 'thesaltykaren$core_db',
+        'USER': 'thesaltykaren',
         'PASSWORD': 'b7a8394ac',
         'HOST': 'thesaltykaren.mysql.pythonanywhere-services.com',
         'OPTIONS': {
