@@ -15,7 +15,7 @@ from .forms import KarenPostForm, UpdateCommentForm
 
 class IndexView(ListView):
     model = KarenPost
-    template_name = 'karen_app/index.html'
+    template_name = 'app_karen/index.html'
     context_object_name = 'posts'
 
     def get_queryset(self):
@@ -24,7 +24,7 @@ class IndexView(ListView):
 
 class KarenPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = KarenPost
-    template_name = 'karen_app/forms/post-create.html'
+    template_name = 'app_karen/forms/post-create.html'
     form_class = KarenPostForm
     success_url = reverse_lazy('index')
     success_message = 'Karen post has been created!'
@@ -36,13 +36,13 @@ class KarenPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class KarenPostDetailView(LoginRequiredMixin, DetailView):
     model = KarenPost
-    template_name = 'karen_app/karen-post-detail.html'
+    template_name = 'app_karen/karen-post-detail.html'
     context_object_name = 'post'
 
 
 class KarenPostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = KarenPost
-    template_name = 'karen_app/forms/post-update.html'
+    template_name = 'app_karen/forms/post-update.html'
     form_class = KarenPostForm
     success_url = reverse_lazy('index')
 
@@ -53,7 +53,7 @@ class KarenPostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class KarenPostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = KarenPost
-    template_name = 'karen_app/confirm_delete_karenpost.html'
+    template_name = 'app_karen/confirm_delete_karenpost.html'
     context_object_name = 'post'
     success_url = reverse_lazy('index')
     success_message = 'Post has been successfully deleted!'
@@ -85,7 +85,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
-    template_name = 'karen_app/forms/comment-update.html'
+    template_name = 'app_karen/forms/comment-update.html'
     form_class = UpdateCommentForm
 
     def get_object(self):
@@ -98,7 +98,7 @@ class CommentUpdateView(LoginRequiredMixin, UpdateView):
 
 class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Comment
-    template_name = 'karen_app/confirm_delete_comment.html'
+    template_name = 'app_karen/confirm_delete_comment.html'
     context_object_name = 'comment'
     success_message = 'Comment has been successfully deleted!'
 
