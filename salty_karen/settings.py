@@ -84,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'core_db',
-        'USER': 'thesaltykaren',
+        'USER': 'thesaltykaren$core_db',
         'PASSWORD': 'b7a8394ac',
         'HOST': 'thesaltykaren.mysql.pythonanywhere-services.com',
         'OPTIONS': {
