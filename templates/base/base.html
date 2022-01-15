@@ -38,11 +38,11 @@
               <a class="nav-link" href="{% url 'post-create' %}">Post a Karen</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Log out</a>
+              <a class="nav-link" href="{% url 'logout' %}">Log out</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Log in/Sign Up</a>
+              <a class="nav-link" href="{% url 'login' %}">Log in/Sign Up</a>
             </li>
             {% endif %}
           </ul>
