@@ -39,4 +39,7 @@ class Comment(TimeStampedModel):
     def __str__(self):
         return self.content
 
+    def count(self):
+        return self.post.comments.count()
+
 
