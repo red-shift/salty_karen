@@ -1,12 +1,10 @@
 {% extends 'base/base.html' %}
 
-{% block title %}
-Karen Tracker Timeline
-{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h2>Karen Post</h2>
+    <h2>{{ post.title }}</h2>
     <div class="card mb-5">
         <video controls controlsList="nodownload">
             <source src="{{ post.video.url }}" type="video/mp4">
@@ -22,25 +20,24 @@ Karen Tracker Timeline
 
     </div>
 
-        <h3>Comments({{post.comments.count}})</h3>
-        <hr>
+    <h3>Comments({{post.comments.count}})</h3>
+    <hr>
 
-        {% if post.comments %}
-            {% for c in post.comments.all %}
-                <p>
-                    {{ c.author }}: {{ c.content }}
-                    <a href="{% url 'comment-update' c.uuid %}">update</a>
-                    <a href="{% url 'comment-delete' c.uuid %}">delete</a>
-                </p>
-            {% endfor %}
-        {% endif %}
+    {% if post.comments %}
+        {% for c in post.comments.all %}
+            <p>
+                {{ c.author }}: {{ c.content }}
+                <a href="{% url 'comment-update' c.uuid %}">update</a>
+                <a href="{% url 'comment-delete' c.uuid %}">delete</a>
+            </p>
+        {% endfor %}
+    {% endif %}
 
-        <form method="post" enctype="multipart/form-data" action="{% url 'comment-create' post.slug %}">{% csrf_token %}
-            <textarea name="content" class="form-control"></textarea>
+    <form method="post" enctype="multipart/form-data" action="{% url 'comment-create' post.slug %}">{% csrf_token %}
+        <textarea name="content" class="form-control"></textarea>
 
-            <input type="submit" class="btn btn-primary" value="Submit">
-        </form>
-
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
 </div>
 
 {% endblock %}
