@@ -12,7 +12,10 @@ Karen Tracker Timeline
             {% for p in posts %}
             <div class="col-md-3">
                 <div class="card mb-5">
-                    <img src="{{ p.image.url }}" height="200" alt="...">
+                    <video controls>
+                        <source src="{{ p.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="card-body">
                         <h5 class="card-title">{{ p.title }}</h5>
                         <p class="card-text">{{ p.description }}</p>
