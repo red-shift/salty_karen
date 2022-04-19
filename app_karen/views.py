@@ -10,9 +10,8 @@ from django.urls import reverse, reverse_lazy
 from .models import KarenPost, Comment
 from .forms import KarenPostForm, UpdateCommentForm
 
+
 # <editor-fold desc="Karen Post Views">
-
-
 class IndexView(ListView):
     model = KarenPost
     template_name = 'app_karen/index.html'
@@ -61,12 +60,10 @@ class KarenPostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessag
     def test_func(self):
         obj = self.get_object()
         return obj.author == self.request.user
-
-
 # </editor-fold>
 
-# <editor-fold desc="Comment Views">
 
+# <editor-fold desc="Comment Views">
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     template_name = 'base/base.html'
@@ -112,6 +109,4 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
     def get_success_url(self):
         comment = self.get_object()
         return reverse('post-detail', kwargs={'slug': comment.post.slug})
-
-
 # </editor-fold>
