@@ -20,7 +20,6 @@ class KarenPost(TimeStampedModel):
     location = models.CharField(max_length=64)
     description = models.TextField()
     video = models.FileField(null=True, blank=True)
-    image = models.ImageField()
     is_approved = models.BooleanField(default=False)
 
     def __str__(self):
