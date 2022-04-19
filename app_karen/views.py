@@ -34,7 +34,7 @@ class KarenPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class KarenPostDetailView(LoginRequiredMixin, DetailView):
+class KarenPostDetailView(DetailView):
     model = KarenPost
     template_name = 'app_karen/karen-post-detail.html'
     context_object_name = 'post'
