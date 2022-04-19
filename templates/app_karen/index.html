@@ -20,7 +20,7 @@ Karen Tracker Timeline
                         <h5 class="card-title">{{ p.title }}</h5>
                         <p class="card-text">{{ p.description }}</p>
                         <p class="card-text"><a href="{{ p.get_absolute_url }}">Read More...</a></p>
-                        {% if request.user.is_authenticated %}
+                        {% if request.user == p.author %}
                         <a href="{% url 'post-update' p.slug %}" class="btn btn-primary">Update</a>
                         <a href="{% url 'post-delete' p.slug %}" class="btn btn-danger">Delete</a>
                         {% endif %}

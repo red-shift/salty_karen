@@ -13,7 +13,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.description }}</p>
-            {% if request.user.is_authenticated %}
+            {% if request.user == post.author %}
             <a href="{% url 'post-update' post.slug %}" class="btn btn-primary">Update</a>
             <a href="{% url 'post-delete' post.slug %}" class="btn btn-danger">Delete</a>
             {% endif %}
@@ -28,7 +28,7 @@
         {% for c in post.comments.all %}
             <p>
                 {{ c.author }}: {{ c.content }}
-                {% if request.user.is_authenticated %}
+                {% if request.user == c.author %}
                 <a href="{% url 'comment-update' c.uuid %}">update</a>
                 <a href="{% url 'comment-delete' c.uuid %}">delete</a>
                 {% endif %}
