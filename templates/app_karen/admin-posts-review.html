@@ -17,14 +17,14 @@ Admin Posts Review
                             <th>Title</th>
                             <th>Description</th>
                             <th>Author</th>
-                            <th colspan="2">Actions</th>
+                            <th colspan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for p in posts %}
                         <tr>
                             <td>
-                                <video controls>
+                                <video width="200" controls>
                                     <source src="{{ p.video.url }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -32,6 +32,11 @@ Admin Posts Review
                             <td>{{ p.title }} </td>
                             <td>{{ p.description }} </td>
                             <td>{{ p.author }} </td>
+                            <td>
+                                <a href="{% url 'admin-comments-review' p.slug %}" class="btn btn-secondary">
+                                    Comments({{p.comments.count}})
+                                </a>
+                            </td>
                             <td>
                                 <a href="{% url 'post-update' p.slug %}" class="btn btn-primary">Update</a>
                             </td>
