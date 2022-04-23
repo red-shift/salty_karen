@@ -9,6 +9,24 @@ Admin Posts Review
     <h2>Admin Posts Review</h2>
     {% if posts %}
         <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Author</th>
+                            <th>Comment</th>
+                            <th colspan="2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in comments %}
+                        <tr>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             {% for p in posts %}
             <div class="col-md-3">
                 <div class="card mb-5">

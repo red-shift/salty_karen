@@ -113,19 +113,25 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
 
 
 # <editor-fold desc="Karen Post Views">
-class AdminPostsReviewView(ListView):
+class AdminPostsReviewView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = KarenPost
     template_name = 'app_karen/admin-posts-review.html'
     context_object_name = 'posts'
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
     def get_queryset(self):
         return super().get_queryset().order_by('-created_at')
 
 
-class AdminCommentsReviewVue(ListView):
+class AdminCommentsReviewView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = KarenPost
     template_name = 'app_karen/admin-comments-review.html'
     context_object_name = 'comments'
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
     def get_queryset(self):
         return super().get_queryset().order_by('-created_at')
