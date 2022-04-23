@@ -14,8 +14,10 @@ urlpatterns = [
     path('comment/<uuid:uuid>/update/', views.CommentUpdateView.as_view(), name='comment-update'),
     path('comment/<uuid:uuid>/delete/', views.CommentDeleteView.as_view(), name='comment-delete'),
     # Karen Admin CRUD Views
-    path('admin/posts/review/', views.AdminPostsReviewView.as_view(), name='admin-posts-review'),
+    path('moderate/posts/review/', views.AdminPostsReviewView.as_view(), name='admin-posts-review'),
     path(
-        'admin/post/<slug:slug>/comments/review/', views.AdminCommentsReviewView.as_view(), name='admin-comments-review'
+        'moderate/post/<slug:slug>/comments/review/',
+        views.AdminCommentsReviewView.as_view(),
+        name='admin-comments-review'
     ),
 ]
