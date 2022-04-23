@@ -1,54 +1,42 @@
 {% extends 'base/base.html' %}
 
 {% block title %}
-Admin Posts Review
+Admin Comments Review
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h2>Admin Posts Review</h2>
-    {% if posts %}
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Author</th>
-                            <th>Comment</th>
-                            <th colspan="2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for comment in comments %}
-                        <tr>
-                            <td></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            {% for p in posts %}
-            <div class="col-md-3">
-                <div class="card mb-5">
-                    <video controls>
-                        <source src="{{ p.video.url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ p.title }}</h5>
-                        <p class="card-text">{{ p.description }}</p>
-                        <p class="card-text"><a href="{{ p.get_absolute_url }}">Read More...</a></p>
-                        {% if request.user == p.author %}
-                        <a href="{% url 'post-update' p.slug %}" class="btn btn-primary">Update</a>
-                        <a href="{% url 'post-delete' p.slug %}" class="btn btn-danger">Delete</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+    <h2>Admin comments Review</h2>
+    {% if comments %}
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Comment</th>
+                        <th>Author</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in comments %}
+                    <tr>
+                        <td>{{ c.content }}</td>
+                        <td>{{ c.author }}</td>
+                        <td>
+                            <a href="" class="btn btn-primary">Ban User</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'comment-delete' c.uuid %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+    </div>
     {% else %}
-        <p>There are no posts!</p>
+        <p>There are no comments for this post!</p>
     {% endif %}
 </div>
 

@@ -126,7 +126,7 @@ class AdminPostsReviewView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
 
 class AdminCommentsReviewView(LoginRequiredMixin, UserPassesTestMixin, ListView):
-    model = KarenPost
+    model = Comment
     template_name = 'app_karen/admin-comments-review.html'
     context_object_name = 'comments'
 

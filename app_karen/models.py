@@ -26,7 +26,6 @@ class KarenPost(TimeStampedModel):
         return self.title
 
     def get_absolute_url(self):
-        print(self.slug)
         return reverse('post-detail', kwargs={'slug': self.slug})
 
 
