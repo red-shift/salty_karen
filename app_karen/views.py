@@ -110,3 +110,24 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
         comment = self.get_object()
         return reverse('post-detail', kwargs={'slug': comment.post.slug})
 # </editor-fold>
+
+
+# <editor-fold desc="Karen Post Views">
+class AdminPostsReviewView(ListView):
+    model = KarenPost
+    template_name = 'app_karen/admin-posts-review.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return super().get_queryset().order_by('-created_at')
+
+
+class AdminCommentsReviewVue(ListView):
+    model = KarenPost
+    template_name = 'app_karen/admin-comments-review.html'
+    context_object_name = 'comments'
+
+    def get_queryset(self):
+        return super().get_queryset().order_by('-created_at')
+
+# </editor-fold>
